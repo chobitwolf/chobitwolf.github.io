@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>WPF使用NPOI讀寫Excel (1)：安裝NPOI | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="此篇文章參考[C#]使用NPOI產生或讀取Excel .xls 與 .xlsx檔案 最近在學習WPF，想將資料儲存成Excel，但上網查詢後，發現以前的文章都是使用加入參考的方式。(請參考：C# 寫資料到Excel的方式)  找不到Office的參考選項時，需重新安裝Office，選擇EXCEL底下的.NET程式設計支援。 後來在網路上找到，使用NPOI來產生Excel的方法，而且好處是不需要安裝">
+<meta name="keywords" content="WPF,NPOI,Excel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WPF使用NPOI讀寫Excel (1)：安裝NPOI">
+<meta property="og:url" content="http://yoursite.com/2018/11/09/vs2017-npoi-excel_1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="此篇文章參考[C#]使用NPOI產生或讀取Excel .xls 與 .xlsx檔案 最近在學習WPF，想將資料儲存成Excel，但上網查詢後，發現以前的文章都是使用加入參考的方式。(請參考：C# 寫資料到Excel的方式)  找不到Office的參考選項時，需重新安裝Office，選擇EXCEL底下的.NET程式設計支援。 後來在網路上找到，使用NPOI來產生Excel的方法，而且好處是不需要安裝">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/11/09/vs2017-npoi-excel_1/project_NuGet.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/09/vs2017-npoi-excel_1/tool_NuGet.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/09/vs2017-npoi-excel_1/NPOI.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/09/vs2017-npoi-excel_1/NPOI_inistall.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/09/vs2017-npoi-excel_1/NPOI_inistall_success.png">
+<meta property="og:updated_time" content="2018-12-21T07:16:50.187Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WPF使用NPOI讀寫Excel (1)：安裝NPOI">
+<meta name="twitter:description" content="此篇文章參考[C#]使用NPOI產生或讀取Excel .xls 與 .xlsx檔案 最近在學習WPF，想將資料儲存成Excel，但上網查詢後，發現以前的文章都是使用加入參考的方式。(請參考：C# 寫資料到Excel的方式)  找不到Office的參考選項時，需重新安裝Office，選擇EXCEL底下的.NET程式設計支援。 後來在網路上找到，使用NPOI來產生Excel的方法，而且好處是不需要安裝">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/09/vs2017-npoi-excel_1/project_NuGet.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-vs2017-npoi-excel_1" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/09/vs2017-npoi-excel_1/" class="article-date">
+  <time datetime="2018-11-09T07:19:35.000Z" itemprop="datePublished">2018-11-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      WPF使用NPOI讀寫Excel (1)：安裝NPOI
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>此篇文章參考<a href="http://aminggo.idv.tw/blog/?p=1267" target="_blank" rel="noopener">[C#]使用NPOI產生或讀取Excel .xls 與 .xlsx檔案</a></p>
+<p>最近在學習WPF，想將資料儲存成Excel，但上網查詢後，發現以前的文章都是使用加入參考的方式。(請參考：<a href="http://jerry5217.pixnet.net/blog/post/312240331-c%23-%E5%AF%AB%E8%B3%87%E6%96%99%E5%88%B0excel%E7%9A%84%E6%96%B9%E5%BC%8F" target="_blank" rel="noopener">C# 寫資料到Excel的方式</a>) </p>
+<p>找不到Office的參考選項時，需重新安裝Office，選擇<strong>EXCEL底下的.NET程式設計支援</strong>。</p>
+<p>後來在網路上找到，使用NPOI來產生Excel的方法，而且好處是不需要安裝Excel也能使用。<br><a id="more"></a><br>進入專案後可以從<br><strong>專案-&gt;管理 NuGet 套件</strong><br><img src="/2018/11/09/vs2017-npoi-excel_1/project_NuGet.png" alt=""></p>
+<p>或是</p>
+<p><strong>工具-&gt;NuGet套件管理員-&gt;管理方案的 NuGet 套件</strong><br><img src="/2018/11/09/vs2017-npoi-excel_1/tool_NuGet.png" alt=""></p>
+<p>進入NuGet套件管理員後<br>點選<code>瀏覽</code>在框內輸入<code>NPOI</code>來搜尋套件。<br>選擇第一項<code>NPOI</code>並點選<code>安裝</code>。<br><img src="/2018/11/09/vs2017-npoi-excel_1/NPOI.png" alt=""></p>
+<p>按下<code>確定</code>開始安裝<br><img src="/2018/11/09/vs2017-npoi-excel_1/NPOI_inistall.png" alt=""></p>
+<p>安裝完成後可以在側邊看到新增了NPOI<br><img src="/2018/11/09/vs2017-npoi-excel_1/NPOI_inistall_success.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/09/vs2017-npoi-excel_1/" data-id="cjpxpccpn0003943b32ne8gp2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Excel/">Excel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NPOI/">NPOI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WPF/">WPF</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/09/test/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">123</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/">Excel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPOI/">NPOI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WPF/">WPF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/NPOI/" style="font-size: 10px;">NPOI</a> <a href="/tags/WPF/" style="font-size: 10px;">WPF</a> <a href="/tags/test/" style="font-size: 10px;">test</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/09/vs2017-npoi-excel_1/">WPF使用NPOI讀寫Excel (1)：安裝NPOI</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/09/test/">123</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/02/測試/">測試</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/29/markdown_cheatsheet/">Markdown Cheatsheet 中文版</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/23/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
